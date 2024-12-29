@@ -19,7 +19,12 @@ const PORT: string | number = process.env.PORT || 5000;
 connectDB();
 
 // Routes
-app.use('/api', router);
+app.use((err: any, req: Request, res: Response, next: Function) => {
+  res.status(err.status || 500).send({
+      message: err.message || 'Internal Server Error',
+  });
+});
+
 
 // Start the server
 app.listen(PORT, () => {
