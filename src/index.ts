@@ -25,6 +25,8 @@ app.use((err: any, req: Request, res: Response, next: Function) => {
   });
 });
 
+app.use('/api',router)
+
 
 // Start the server
 app.listen(PORT, () => {
